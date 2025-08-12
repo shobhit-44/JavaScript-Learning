@@ -1,0 +1,194 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f9f9f9;
+  color: #222;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* Header */
+@keyframes multicolorGlow {
+  0% {
+    box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+    border-color: #ff0000;
+    color: #ff0000;
+  }
+  33% {
+    box-shadow: 0 0 15px #00ff00, 0 0 30px #00ff00;
+    text-shadow: 0 0 15px #00ff00, 0 0 30px #00ff00;
+    border-color: #00ff00;
+    color: #00ff00;
+  }
+  66% {
+    box-shadow: 0 0 20px #00ccff, 0 0 40px #00ccff;
+    text-shadow: 0 0 20px #00ccff, 0 0 40px #00ccff;
+    border-color: #00ccff;
+    color: #00ccff;
+  }
+  100% {
+    box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+    border-color: #ff0000;
+    color: #ff0000;
+  }
+}
+
+header {
+  background: linear-gradient(to right, #000000, #0d0d0d); /* Dark background */
+  padding: 30px 20px;
+  text-align: center;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  border: 2px solid #fff;
+  animation: multicolorGlow 4s ease-in-out infinite;
+}
+
+header h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.2rem;
+}
+
+
+/* Blog Container */
+.blog-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+/* Unified Blog Card Style */
+.blog {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  position: relative;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  z-index: 1;
+}
+
+/* On Hover - Size & Shadow */
+.blog:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
+  border-color: #ff4d4d;
+}
+
+/* Colorful Light Glow Animation */
+.blog::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(0, 255, 0, 0.25),
+    rgba(255, 0, 0, 0.25),
+    rgba(0, 0, 255, 0.25),
+    rgba(0, 255, 0, 0.25)
+  );
+  animation: lightGlow 6s linear infinite;
+  z-index: -1;
+  opacity: 1;
+  filter: blur(25px);
+}
+
+@keyframes lightGlow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Blog Content */
+.blog h2 {
+  font-size: 1.6rem;
+  color: #b30000;
+  margin-bottom: 10px;
+}
+
+.blog p {
+  font-size: 1rem;
+  color: #333;
+}
+
+.custom-footer {
+  background-color: #232223;
+  color: #fff;
+  padding: 40px 20px 20px;
+  font-family: 'Segoe UI', sans-serif;
+  margin-top: 40px;
+  border-radius: 9px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.footer-logo h2 {
+  margin: 0;
+  color: #ffcc00;
+}
+
+.footer-logo p {
+  margin: 8px 0;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.footer-links a,
+.footer-socials a {
+  display: block;
+  color: #ccc;
+  text-decoration: none;
+  margin: 8px 0;
+  font-size: 15px;
+  transition: 0.3s ease;
+}
+
+.footer-links a:hover,
+.footer-socials a:hover {
+  color: #ffcc00;
+  transform: scale(1.05);
+}
+
+.footer-links,
+.footer-socials {
+  margin-top: 10px;
+}
+
+footer .copyright {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 13px;
+  color: #888;
+  border-top: 1px solid #333;
+  padding-top: 15px;
+}
+
+
+

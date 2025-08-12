@@ -1,0 +1,26 @@
+/* Small devices - Mobile */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  .blog h2 {
+    font-size: 1.2rem;
+  }
+
+  .blog-container {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Tablets */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .blog-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

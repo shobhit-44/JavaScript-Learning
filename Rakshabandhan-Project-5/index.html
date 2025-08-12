@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Raksha Bandhan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Great Vibes', cursive;
+    }
+    body {
+      background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+      overflow: hidden;
+      position: relative;
+      color: white;
+      text-align: center;
+    }
+    h1 {
+      font-size: 4rem;
+      margin-top: 60px;
+      text-shadow: 0 0 20px #ff4081, 0 0 30px #ff4081;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    .message {
+      font-size: 2rem;
+      margin: 20px auto;
+      max-width: 800px;
+      animation: fadeIn 2s ease-in-out 1s forwards;
+      opacity: 0;
+    }
+    .popup {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 2px solid #ff4081;
+      padding: 30px;
+      margin: 30px auto;
+      border-radius: 20px;
+      width: 80%;
+      max-width: 500px;
+      animation: bounceIn 1.5s ease-out 2s forwards;
+      opacity: 0;
+    }
+    .typing {
+      font-size: 1.5rem;
+      color: #ffb6c1;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #ffb6c1;
+      width: 0;
+      animation: typing 5s steps(40, end) forwards, blink 0.75s step-end infinite;
+      margin: 20px auto;
+    }
+    .next-button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 15px 40px;
+      font-size: 1.5rem;
+      color: #fff;
+      background: linear-gradient(45deg, #ff4081, #ff80ab);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      animation: pulseGlow 1.5s infinite;
+      transition: transform 0.3s ease;
+    }
+    .next-button:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ff4081; }
+      to { text-shadow: 0 0 30px #ff4081, 0 0 40px #ff4081; }
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0.3); opacity: 0; }
+      50% { transform: scale(1.1); opacity: 1; }
+      70% { transform: scale(0.9); }
+      100% { transform: scale(1); }
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 5px #ff4081; }
+      50% { box-shadow: 0 0 25px #ff80ab; }
+      100% { box-shadow: 0 0 5px #ff4081; }
+    }
+    canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+  <h1>Happy Raksha Bandhan</h1>
+  <div class="message">
+    A bond woven with threads of love, care, and countless childhood memories.
+  </div>
+  <div class="popup">
+    May your Raksha Bandhan be filled with laughter, joy, and lifelong promises! 🌸
+  </div>
+  <div class="typing">
+    Sending lots of love and warm wishes on this beautiful occasion 💖
+  </div>
+
+  <a href="gift.html" class="next-button">🎁 Click to Reveal Your Surprise</a>
+
+  <canvas id="confetti"></canvas>
+  <canvas id="sparkles"></canvas>
+
+  <audio autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // Confetti
+    const canvas = document.getElementById('confetti');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const particles = [];
+    for (let i = 0; i < 200; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 4 + 1,
+        d: Math.random() * 50,
+        color: `hsl(${Math.random() * 360}, 100%, 70%)`,
+        tilt: Math.floor(Math.random() * 10) - 10
+      });
+    }
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((p, i) => {
+        ctx.beginPath();
+        ctx.fillStyle = p.color;
+        ctx.moveTo(p.x, p.y);
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2, true);
+        ctx.fill();
+        p.y += Math.cos(p.d);
+        p.x += Math.sin(p.d);
+        if (p.y > canvas.height) {
+          particles[i] = {
+            x: Math.random() * canvas.width,
+            y: -10,
+            r: p.r,
+            d: p.d,
+            color: p.color,
+            tilt: p.tilt
+          };
+        }
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+
+    // Sparkles
+    const sparkCanvas = document.getElementById('sparkles');
+    const sctx = sparkCanvas.getContext('2d');
+    sparkCanvas.width = window.innerWidth;
+    sparkCanvas.height = window.innerHeight;
+    const sparkles = [];
+    for (let i = 0; i < 100; i++) {
+      sparkles.push({
+        x: Math.random() * sparkCanvas.width,
+        y: Math.random() * sparkCanvas.height,
+        r: Math.random() * 2,
+        dx: (Math.random() - 0.5) * 0.5,
+        dy: (Math.random() - 0.5) * 0.5,
+        color: `rgba(255,255,255,${Math.random()})`
+      });
+    }
+    function animateSparkles() {
+      sctx.clearRect(0, 0, sparkCanvas.width, sparkCanvas.height);
+      sparkles.forEach(s => {
+        sctx.beginPath();
+        sctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        sctx.fillStyle = s.color;
+        sctx.fill();
+        s.x += s.dx;
+        s.y += s.dy;
+        if (s.x < 0 || s.x > sparkCanvas.width) s.dx *= -1;
+        if (s.y < 0 || s.y > sparkCanvas.height) s.dy *= -1;
+      });
+      requestAnimationFrame(animateSparkles);
+    }
+    animateSparkles();
+  </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let product={
+company:"Myntra",
+ Brand:"Zaea",
+ price:6787,
+ Item:"T-shirt",
+ size:"s",
+ 'dilivery-time':'23 june 2025',
+ displayprice:function(){
+console.log(`Price of this t shir is ${this.price}`)
+}
+};
+ /*let copyproduct=product;
+ console.log(product);
+ copyproduct.size='m';
+ console.log(product);
+ copyproduct.price=9767;
+ console.log(product)*/
+ console.log(product['dilivery-time']);
+ let{company,size,Item}=product
+ console.log(company);
+ console.log(Item);
+ console.log(size);
+
+
+ </script>
+</body>
+</html>

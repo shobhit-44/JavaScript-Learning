@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Raksha Bandhan Gift Box</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffe6f0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .balloon {
+      position: absolute;
+      bottom: -100px;
+      font-size: 3rem;
+      animation: floatUp 10s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    .heading {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #42a5f5, #ff69b4, #66ff66);
+      background-size: 300% auto;
+      color: #fff;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shineText 4s linear infinite;
+    }
+
+    @keyframes shineText {
+      0% { background-position: 0% center; }
+      100% { background-position: 300% center; }
+    }
+
+    .container {
+      display: flex;
+      gap: 40px;
+    }
+
+    .box {
+      width: 180px;
+      height: 180px;
+      background-color: #ff69b4;
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3rem;
+      cursor: pointer;
+      transition: transform 0.4s ease;
+      position: relative;
+    }
+
+    .box:hover {
+      transform: scale(1.2);
+    }
+
+    .box::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      right: -8px;
+      bottom: -8px;
+      border-radius: 25px;
+      background: linear-gradient(45deg, #00ffff, #00ff00, #00ffff, #00ff00);
+      background-size: 400% 400%;
+      z-index: -1;
+      animation: borderMove 3s linear infinite;
+      filter: blur(10px);
+    }
+
+    @keyframes borderMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal .content {
+      background: #fff0f5;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(0,0,0,0.2);
+    }
+
+    .modal .content p {
+      font-size: 1.3rem;
+      margin: 15px 0;
+    }
+
+    .close-btn {
+      margin-top: 10px;
+      padding: 8px 20px;
+      border: none;
+      background-color: #ff1493;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .flipkart-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 25px;
+      font-size: 1rem;
+      background: linear-gradient(45deg, #1976d2, #42a5f5);
+      color: #fff;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 0 15px rgba(25, 118, 210, 0.6);
+      animation: pulseFlip 2s infinite;
+      transition: transform 0.3s ease;
+    }
+
+    .flipkart-btn:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes pulseFlip {
+      0% { box-shadow: 0 0 10px #42a5f5; }
+      50% { box-shadow: 0 0 30px #1976d2; }
+      100% { box-shadow: 0 0 10px #42a5f5; }
+    }
+  </style>
+</head>
+<body>
+  <div class="heading">🎀 Choose Your Gift Box Sister 🎁</div>
+
+  <!-- Balloon Background Animation (increased quantity and size) -->
+  <div class="balloon" style="left: 5%; animation-delay: 0s;">🎈</div>
+  <div class="balloon" style="left: 15%; animation-delay: 1s;">🎈</div>
+  <div class="balloon" style="left: 25%; animation-delay: 2s;">🎈</div>
+  <div class="balloon" style="left: 35%; animation-delay: 3s;">🎈</div>
+  <div class="balloon" style="left: 45%; animation-delay: 4s;">🎈</div>
+  <div class="balloon" style="left: 55%; animation-delay: 5s;">🎈</div>
+  <div class="balloon" style="left: 65%; animation-delay: 6s;">🎈</div>
+  <div class="balloon" style="left: 75%; animation-delay: 7s;">🎈</div>
+  <div class="balloon" style="left: 85%; animation-delay: 8s;">🎈</div>
+  <div class="balloon" style="left: 95%; animation-delay: 9s;">🎈</div>
+
+  <div class="container">
+    <div class="box" onclick="openModal(1)">🎁</div>
+    <div class="box" onclick="openModal(2)">🎁</div>
+    <div class="box" onclick="openModal(3)">🎁</div>
+  </div>
+
+  <!-- Modals -->
+  <div class="modal" id="modal1">
+    <div class="content">
+      <div class="rose">💻</div>
+      <p>A brand new laptop just for your dreams! 💖</p>
+      <a href="https://www.flipkart.com" target="_blank" class="flipkart-btn">🛍️ Order it now with my credit card</a>
+      <button class="close-btn" onclick="closeModal(1)">Close</button>
+    </div>
+  </div>
+
+  <div class="modal" id="modal2">
+    <div class="content">
+      <div class="heart">🛵</div>
+      <p>A brand new stylish scooty for college! 😎</p>
+      <a href="https://www.flipkart.com" target="_blank" class="flipkart-btn">🛍️ Order now with my credit card</a>
+      <button class="close-btn" onclick="closeModal(2)">Close</button>
+    </div>
+  </div>
+
+  <div class="modal" id="modal3">
+    <div class="content">
+      <div class="sweets">📱</div>
+      <p>An iPhone just for you — because you deserve the best! ✨</p>
+      <a href="https://www.flipkart.com" target="_blank" class="flipkart-btn">🛍️ Order it now with my credit card</a>
+      <button class="close-btn" onclick="closeModal(3)">Close</button>
+    </div>
+  </div>
+
+  <script>
+    function openModal(num) {
+      document.getElementById(`modal${num}`).style.display = 'flex';
+    }
+
+    function closeModal(num) {
+      document.getElementById(`modal${num}`).style.display = 'none';
+    }
+  </script>
+</body>
+</html>
